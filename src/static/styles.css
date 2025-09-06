@@ -74,6 +74,29 @@ section h3 {
   margin-bottom: 8px;
 }
 
+.activity-card ul {
+  list-style-type: none; /* Change to standard bulleted list */
+  margin-left: 20px; /* Add indentation for bullets */
+  padding-left: 0;
+}
+
+.activity-card ul li {
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 14px;
+  position: relative;
+  padding-left: 0; /* Remove custom padding */
+}
+
+.activity-card ul li::before {
+  content: none; /* Remove custom bullet icon */
+}
+
+.no-bullets {
+  list-style-type: none;
+  padding: 0;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -106,6 +129,21 @@ button {
 
 button:hover {
   background-color: #3949ab;
+}
+
+.delete-btn {
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #b71c1c;
 }
 
 .message {
@@ -141,4 +179,23 @@ footer {
   margin-top: 30px;
   padding: 20px;
   color: #666;
+}
+footer a {
+  color: #1a237e;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+.participants-list {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+.participants-list li {
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 14px;
 }

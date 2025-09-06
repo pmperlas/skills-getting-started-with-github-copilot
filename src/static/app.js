@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
           <p>${details.description}</p>
           <p><strong>Schedule:</strong> ${details.schedule}</p>
           <p><strong>Availability:</strong> ${spotsLeft} spots left</p>
+          <p><strong>Participants:</strong></p>
+          <ul class="participants-list">
+            ${details.participants.map(participant => `<li>${participant}</li>`).join("")}
+          </ul>
         `;
 
         activitiesList.appendChild(activityCard);
@@ -62,6 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
         messageDiv.textContent = result.message;
         messageDiv.className = "success";
         signupForm.reset();
+
+        // Refresh activities list dynamically
+        await fetchActivities();
       } else {
         messageDiv.textContent = result.detail || "An error occurred";
         messageDiv.className = "error";
@@ -81,6 +88,49 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Function to fetch participants and render them
+  async function fetchParticipants() {
+    const participantsList = document.getElementById("participants-list");
+    try {
+      const response = await fetch("/participants");
+      const participants = await response.json();
+
+      participantsList.innerHTML = ""; // Clear existing participants
+
+      participants.forEach((participant) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+          ${participant}
+          <button class="delete-btn" data-email="${participant}">Delete</button>
+        `;
+        participantsList.appendChild(listItem);
+      });
+
+      // Add event listeners to delete buttons
+      document.querySelectorAll(".delete-btn").forEach((button) => {
+        button.addEventListener("click", async (event) => {
+          const email = event.target.getAttribute("data-email");
+          await unregisterParticipant(email);
+          fetchParticipants();
+        });
+      });
+    } catch (error) {
+      console.error("Error fetching participants:", error);
+    }
+  }
+
+  // Function to unregister a participant
+  async function unregisterParticipant(email) {
+    try {
+      await fetch(`/participants/${encodeURIComponent(email)}`, {
+        method: "DELETE",
+      });
+    } catch (error) {
+      console.error("Error unregistering participant:", error);
+    }
+  }
+
   // Initialize app
   fetchActivities();
+  fetchParticipants();
 });
