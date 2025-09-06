@@ -75,8 +75,8 @@ section h3 {
 }
 
 .activity-card ul {
-  list-style-type: none;
-  margin-left: 0;
+  list-style-type: disc; /* Change to standard bulleted list */
+  margin-left: 20px; /* Add indentation for bullets */
   padding-left: 0;
 }
 
@@ -85,16 +85,11 @@ section h3 {
   color: #555;
   font-size: 14px;
   position: relative;
-  padding-left: 20px;
+  padding-left: 0; /* Remove custom padding */
 }
 
 .activity-card ul li::before {
-  content: "✔"; /* Custom bullet icon */
-  color: #1a237e;
-  font-size: 12px;
-  position: absolute;
-  left: 0;
-  top: 0;
+  content: none; /* Remove custom bullet icon */
 }
 
 .no-bullets {
@@ -180,6 +175,11 @@ button:hover {
 }
 
 footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  color: #666;
+}
   text-align: center;
   margin-top: 30px;
   padding: 20px;
