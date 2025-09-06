@@ -75,7 +75,7 @@ section h3 {
 }
 
 .activity-card ul {
-  list-style-type: disc; /* Change to standard bulleted list */
+  list-style-type: none; /* Change to standard bulleted list */
   margin-left: 20px; /* Add indentation for bullets */
   padding-left: 0;
 }
