@@ -86,6 +86,11 @@ section h3 {
   font-size: 14px;
 }
 
+.no-bullets {
+  list-style-type: none;
+  padding: 0;
+}
+
 .form-group {
   margin-bottom: 15px;
 }
@@ -118,6 +123,21 @@ button {
 
 button:hover {
   background-color: #3949ab;
+}
+
+.delete-btn {
+  background-color: #c62828;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #b71c1c;
 }
 
 .message {
